@@ -92,6 +92,10 @@ namespace Microsoft.VisualStudio.Services.Agent.Tests.Worker.Build
             executionContext.Object.Variables.Set(Constants.Variables.Build.SourceVersion, sourceVersion);
             executionContext.Object.Variables.Set(Constants.Variables.System.EnableAccessToken, enableAuth.ToString());
 
+            executionContext
+                .Setup(x => x.GetVariable(Constants.Variables.Build.SourcesDirectory, true))
+                .Returns(sourceFolder);
+
             return executionContext;
         }
 
